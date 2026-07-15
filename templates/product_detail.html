@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <img src="{{ product.image.url }}"
+                 class="img-fluid rounded shadow">
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <h1 class="fw-bold">
+                {{ product.name }}
+            </h1>
+
+            <h2 class="text-success mt-3">
+                KSh {{ product.price }}
+            </h2>
+
+            <p class="mt-4">
+                {{ product.description }}
+            </p>
+
+            <p>
+
+                <strong>Stock:</strong>
+
+                {% if product.stock > 0 %}
+                    {{ product.stock }} Available
+                {% else %}
+                    Out of Stock
+                {% endif %}
+
+            </p>
+
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-sofi w-100">
+    🛒 Add to Cart
+</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
