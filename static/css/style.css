@@ -10,27 +10,61 @@ body{
     font-family: Segoe UI, sans-serif;
 }
 
-/* NAVBAR */
+/* 
+   NAVBAR*/
 
 .navbar-sofi{
-    background:
-        linear-gradient(
-            90deg,
-            var(--green),
-            var(--pink)
-        );
+    background: linear-gradient(90deg,#ff4f8b,#2ecc71);
+    padding: 15px 0;
 }
 
-.sv-logo{
-    display:inline-block;
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:white;
-    color:var(--pink);
-    text-align:center;
-    line-height:45px;
-    font-weight:bold;
+.navbar-brand{
+    color:white !important;
+}
+
+.nav-link{
+    color:white !important;
+    font-weight:600;
+    margin-left:12px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#ffe66d !important;
+    transform:translateY(-2px);
+}
+
+.dropdown-menu{
+    border:none;
+    border-radius:15px;
+}
+
+.dropdown-item{
+    padding:12px 20px;
+    font-weight:500;
+}
+
+.dropdown-item:hover{
+    background:#f8f9fa;
+}
+
+.sv-logo-img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+}
+
+.btn-success{
+    background:#2ecc71;
+    border:none;
+}
+
+.btn-success:hover{
+    background:#27ae60;
+}
+
+.btn-outline-light:hover{
+    color:#ff4f8b;
 }
 
 /* HERO */
@@ -51,6 +85,10 @@ body{
     font-weight:bold;
     padding:12px 35px;
     border-radius:50px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .btn-shop:hover{

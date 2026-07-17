@@ -17,6 +17,12 @@
     {% include 'navbar.html' %}
 
     {% block content %}
+
+    {% if user.is_authenticated %}
+
+
+
+{% endif %}
     {% endblock %}
 
     {% include 'footer.html' %}

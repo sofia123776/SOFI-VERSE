@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="fw-bold mb-4">📦 My Orders</h2>
+
+    {% if orders %}
+
+        {% for order in orders %}
+
+        <div class="card shadow border-0 rounded-4 mb-4">
+
+            <div class="card-header bg-success text-white d-flex justify-content-between">
+
+                <div>
+                    <strong>Order #{{ order.id }}</strong>
+                </div>
+
+                <div>
+                    {{ order.created_at|date:"d M Y, H:i" }}
+                </div>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row mb-3">
+
+                    <div class="col-md-4">
+                        <strong>Total:</strong><br>
+                        KSh {{ order.total }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>Status:</strong><br>
+
+                        {% if order.status == "Pending" %}
+                            <span class="badge bg-warning text-dark">
+                                {{ order.status }}
+                            </span>
+
+                        {% elif order.status == "Confirmed" %}
+                            <span class="badge bg-primary">
+                                {{ order.status }}
+                            </span>
+
+                        {% elif order.status == "Shipped" %}
+                            <span class="badge bg-info text-dark">
+                                {{ order.status }}
+                            </span>
+
+                        {% else %}
+                            <span class="badge bg-success">
+                                {{ order.status }}
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>Delivery Address</strong><br>
+                        {{ order.town }}, {{ order.county }}
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <h5>Products</h5>
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for item in order.items.all %}
+
+                    <tr>
+
+                        <td>{{ item.product.name }}</td>
+
+                        <td>{{ item.quantity }}</td>
+
+                        <td>KSh {{ item.price }}</td>
+
+                        <td>KSh {{ item.subtotal }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+    <div class="text-center py-5">
+
+        <h3>No Orders Yet</h3>
+
+        <p class="text-muted">
+            You haven't placed any orders.
+        </p>
+
+        <a href="{% url 'home' %}" class="btn btn-success">
+            Continue Shopping
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

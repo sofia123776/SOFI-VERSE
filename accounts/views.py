@@ -4,6 +4,29 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from orders.models import Order
+from cart.models import CartItem
+
+@login_required
+def dashboard(request):
+
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+
+    total_orders = orders.count()
+
+    cart_items = CartItem.objects.filter(user=request.user).count()
+
+    total_spent = sum(order.total for order in orders)
+
+    context = {
+        'orders': orders[:5],
+        'total_orders': total_orders,
+        'cart_items': cart_items,
+        'total_spent': total_spent,
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
 
 def register(request):
     if request.method == "POST":

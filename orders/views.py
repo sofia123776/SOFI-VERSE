@@ -60,3 +60,12 @@ def order_success(request, order_id):
     return render(request, "orders/order_success.html", {
         "order": order
     })
+
+
+@login_required
+def my_orders(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+
+    return render(request, 'orders/my_orders.html', {
+        'orders': orders
+    })
