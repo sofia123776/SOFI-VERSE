@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Frequently Asked Questions
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="text-center fw-bold mb-5">
+        Frequently Asked Questions
+    </h1>
+
+    <div class="accordion" id="faqAccordion">
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq1">
+
+                    How do I place an order?
+
+                </button>
+
+            </h2>
+
+            <div id="faq1"
+                 class="accordion-collapse collapse show">
+
+                <div class="accordion-body">
+
+                    Browse the Shop page, add products to your cart, then proceed to checkout.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq2">
+
+                    Which payment methods do you accept?
+
+                </button>
+
+            </h2>
+
+            <div id="faq2"
+                 class="accordion-collapse collapse">
+
+                <div class="accordion-body">
+
+                    We are working on integrating M-Pesa. Additional payment methods may be added in the future.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq3">
+
+                    How can I track my order?
+
+                </button>
+
+            </h2>
+
+            <div id="faq3"
+                 class="accordion-collapse collapse">
+
+                <div class="accordion-body">
+
+                    You can view your order history from your dashboard after logging in.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
